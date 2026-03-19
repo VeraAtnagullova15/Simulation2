@@ -24,12 +24,27 @@ public class WorldMap {
         return columnCount;
     }
 
+    private boolean isCellEmpty(Coordinates coordinates) {
+        return !entities.containsKey(coordinates);
+    }
+
+    private boolean isCellInside(Coordinates coordinates) {
+        return  ((coordinates.row() >= 0 && coordinates.row() <= getRowCount()) &&
+        (coordinates.column() >= 0 && coordinates.column() <= getColumnCount()));
+    }
+
+    public boolean isCellAvailablePutEntity(Coordinates coordinates) {
+        return isCellInside(coordinates) && isCellEmpty(coordinates);
+    }
+
     public Entity getEntity(Coordinates coordinates) {
         return entities.get(coordinates);
     }
 
     public void putEntity(Coordinates coordinates, Entity entity) {
-        entities.put(coordinates, entity);
+        if (isCellAvailablePutEntity(coordinates)) {
+            entities.put(coordinates, entity);
+        }
     }
 
     public Coordinates getCoordinates(Entity entity) {

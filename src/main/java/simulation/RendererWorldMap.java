@@ -8,19 +8,19 @@ import simulation.entities.map_objects.Rock;
 import simulation.entities.map_objects.Tree;
 
 public class RendererWorldMap {
-    private static final String REGULAR_BACKGROUD = "\u001B[46;5;107m";
+    private static final String REGULAR_BACKGROUD = "\u001B[44;5;106m";
     private static final String WARNING_BACKGROUND = "\u001B[48;5;214m";
     private static final String DANGER_BACKGROUND = "\u001B[48;5;160m";
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String CLEAR_SCREEN = "\033[2J\033[1;1H";
-    private static final String EMPTY_SPACE = "  ";
+    private static final String EMPTY_SPACE = "\uD83D\uDD32";
     private static final String PREDATOR = "\uD83D\uDC3A";
     private static final String HERBIVORE = "\uD83D\uDC07";
-    private static final String GRASS = "☘\uFE0F";
+    private static final String GRASS = "\uD83E\uDD55";
     private static final String TREE = "\uD83C\uDF32";
     private static final String ROCK = "\uD83E\uDEA8";
 
-    public void printMap(WorldMap worldMap) {
+    public void print(WorldMap worldMap) {
         System.out.println(CLEAR_SCREEN);
         System.out.flush();
         for (int row = 0; row < worldMap.getRowCount(); row++) {
