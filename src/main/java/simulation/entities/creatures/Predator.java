@@ -2,14 +2,12 @@ package simulation.entities.creatures;
 
 public class Predator extends Creature {
     protected int attackPower;
+    private static final int PREDATOR_SPEED = 2;
+    private static final int POWER_ATTACK = 25;
 
-    public Predator(int speed, int hp, int attackPower) {
-        super(speed, hp);
-        this.attackPower = attackPower;
+    public Predator() {
+        super(PREDATOR_SPEED, MAX_HP);
+        this.attackPower = POWER_ATTACK;
     }
 
-    @Override
-    public void makeMove() {
-        //to do
-    }
 }

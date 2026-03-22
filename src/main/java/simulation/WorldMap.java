@@ -1,10 +1,9 @@
 package simulation;
 
 import simulation.entities.Entity;
+import simulation.entities.creatures.Creature;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class WorldMap {
     private final int rowCount;
@@ -24,13 +23,17 @@ public class WorldMap {
         return columnCount;
     }
 
+    public Map<Coordinates, Entity> getEntities() {
+        return new HashMap<>(entities);
+    }
+
     private boolean isCellEmpty(Coordinates coordinates) {
         return !entities.containsKey(coordinates);
     }
 
     private boolean isCellInside(Coordinates coordinates) {
-        return  ((coordinates.row() >= 0 && coordinates.row() <= getRowCount()) &&
-        (coordinates.column() >= 0 && coordinates.column() <= getColumnCount()));
+        return  ((coordinates.row() >= 0 && coordinates.row() < getRowCount()) &&
+        (coordinates.column() >= 0 && coordinates.column() < getColumnCount()));
     }
 
     public boolean isCellAvailablePutEntity(Coordinates coordinates) {
@@ -56,4 +59,27 @@ public class WorldMap {
         }
         throw new NoSuchElementException();
     }
+
+    private void removeEntity(Entity entity) {
+        Coordinates coordinates = getCoordinates(entity);
+        entities.remove(coordinates);
+    }
+
+    public void moveEntity(Entity entity, Coordinates to) {
+        if (isCellAvailablePutEntity(to)) {
+            removeEntity(entity);
+            putEntity(to, entity);
+        }
+    }
+
+    public <T extends Entity> List<T> getAllCreatures(Class<T> clazz) {
+        List<T> creatures = new ArrayList<>();
+        for (Entity type : getEntities().values()) {
+            if (clazz.isInstance(type)) {
+                creatures.add(clazz.cast(type));
+            }
+        }
+        return creatures;
+    }
+
 }

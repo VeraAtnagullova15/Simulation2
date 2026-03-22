@@ -14,6 +14,7 @@ public class RendererWorldMap {
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String CLEAR_SCREEN = "\033[2J\033[1;1H";
     private static final String EMPTY_SPACE = "\uD83D\uDD32";
+//private static final String EMPTY_SPACE = "◻\uFE0F";
     private static final String PREDATOR = "\uD83D\uDC3A";
     private static final String HERBIVORE = "\uD83D\uDC07";
     private static final String GRASS = "\uD83E\uDD55";

@@ -1,12 +1,12 @@
 package simulation.entities.creatures;
 
 public class Herbivore extends Creature {
-    public Herbivore(int speed, int hp) {
-        super(speed, hp);
+    private final static int HERBIVORE_SPEED = 1;
+
+    public Herbivore() {
+        super(HERBIVORE_SPEED, MAX_HP);
     }
 
-    @Override
-    public void makeMove() {
-        //to do
-    }
+
+
 }
