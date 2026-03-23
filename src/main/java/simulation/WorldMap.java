@@ -27,11 +27,11 @@ public class WorldMap {
         return new HashMap<>(entities);
     }
 
-    private boolean isCellEmpty(Coordinates coordinates) {
+    public boolean isCellEmpty(Coordinates coordinates) {
         return !entities.containsKey(coordinates);
     }
 
-    private boolean isCellInside(Coordinates coordinates) {
+    public boolean isCellInside(Coordinates coordinates) {
         return  ((coordinates.row() >= 0 && coordinates.row() < getRowCount()) &&
         (coordinates.column() >= 0 && coordinates.column() < getColumnCount()));
     }

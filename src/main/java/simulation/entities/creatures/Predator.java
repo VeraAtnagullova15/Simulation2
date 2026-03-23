@@ -6,7 +6,7 @@ public class Predator extends Creature {
     private static final int POWER_ATTACK = 25;
 
     public Predator() {
-        super(PREDATOR_SPEED, MAX_HP);
+        super(PREDATOR_SPEED, MAX_HP, Herbivore.class);
         this.attackPower = POWER_ATTACK;
     }
 
