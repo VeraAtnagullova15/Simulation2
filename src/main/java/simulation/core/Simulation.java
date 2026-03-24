@@ -1,17 +1,14 @@
-package simulation;
+package simulation.core;
 
 import simulation.actions.Action;
 import simulation.actions.MoveCreature;
 import simulation.actions.SpawnEntityAction;
-import simulation.entities.Entity;
-import simulation.entities.creatures.Creature;
 import simulation.entities.creatures.Herbivore;
 import simulation.entities.creatures.Predator;
 import simulation.entities.map_objects.Grass;
 import simulation.entities.map_objects.Rock;
 import simulation.entities.map_objects.Tree;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Simulation {

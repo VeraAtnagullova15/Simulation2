@@ -1,7 +1,6 @@
-package simulation;
+package simulation.core;
 
 import simulation.entities.Entity;
-import simulation.entities.creatures.Creature;
 
 import java.util.*;
 
@@ -28,6 +27,9 @@ public class WorldMap {
     }
 
     public boolean isCellEmpty(Coordinates coordinates) {
+        if (!isCellInside(coordinates)) {
+            throw new NoSuchElementException();
+        }
         return !entities.containsKey(coordinates);
     }
 
@@ -60,7 +62,7 @@ public class WorldMap {
         throw new NoSuchElementException();
     }
 
-    private void removeEntity(Entity entity) {
+    public void removeEntity(Entity entity) {
         Coordinates coordinates = getCoordinates(entity);
         entities.remove(coordinates);
     }

@@ -1,5 +1,9 @@
 package simulation;
 
+import simulation.core.RendererWorldMap;
+import simulation.core.Simulation;
+import simulation.core.WorldMap;
+
 public class Main {
     public static void main(String[] args) {
         WorldMap worldMap = new WorldMap(10,10);

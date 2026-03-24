@@ -1,4 +1,4 @@
-package simulation;
+package simulation.core;
 
 import simulation.entities.Entity;
 import simulation.entities.creatures.Herbivore;

@@ -1,15 +1,17 @@
-package simulation;
+package simulation.pathfind;
+
+import simulation.core.Coordinates;
 
 import java.util.Objects;
 
 public class Node {
 
-    private Coordinates previous;
     private Coordinates current;
+    private Coordinates previous;
 
-    public Node(Coordinates previous, Coordinates current) {
-        this.previous = previous;
+    public Node(Coordinates current, Coordinates previous) {
         this.current = current;
+        this.previous = previous;
     }
 
     public Coordinates getPrevious() {

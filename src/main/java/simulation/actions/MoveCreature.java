@@ -1,7 +1,6 @@
 package simulation.actions;
 
-import simulation.WorldMap;
-import simulation.entities.Entity;
+import simulation.core.WorldMap;
 import simulation.entities.creatures.Creature;
 
 import java.util.List;

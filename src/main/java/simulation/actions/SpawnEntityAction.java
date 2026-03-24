@@ -1,7 +1,7 @@
 package simulation.actions;
 
-import simulation.Coordinates;
-import simulation.WorldMap;
+import simulation.core.Coordinates;
+import simulation.core.WorldMap;
 import simulation.entities.Entity;
 
 import java.util.Random;

@@ -1,21 +1,16 @@
-package simulation;
+package simulation.pathfind;
 
+import simulation.core.Coordinates;
+import simulation.core.WorldMap;
 import simulation.entities.Entity;
 
 import java.util.*;
 
-public class Bfs {
-    private final static List<Coordinates> SHIFTS = List.of(
-            new Coordinates(-1, 0),
-            new Coordinates(0, 1),
-            new Coordinates(1, 0),
-            new Coordinates(0, -1));
-
-
+public class BfsWithNode implements PathFinder {
+    @Override
     public List<Coordinates> findPath(WorldMap worldMap, Coordinates from, Class<? extends Entity> target) {
         Queue<Coordinates> neighbors = new ArrayDeque<>();
-//        List<Node> path = new ArrayList<>();
-        Map<Coordinates, Coordinates> path = new HashMap<>();
+        List<Node> path = new ArrayList<>();
         Set<Coordinates> visited = new HashSet<>();
         List<Coordinates> rightPath = new ArrayList<>();
 
@@ -34,7 +29,7 @@ public class Bfs {
                 }
                 Optional<Entity> nextEntityOptional = Optional.ofNullable(worldMap.getEntity(nextStep));
                 if (nextEntityOptional.isEmpty()) {
-                    path.put(nextStep, current);
+                    path.add(new Node(nextStep, current));
                     neighbors.add(nextStep);
                     visited.add(nextStep);
                 } else {
@@ -42,7 +37,7 @@ public class Bfs {
                     if (!target.isInstance(nextEntity)) {
                         visited.add(nextStep);
                     } else {
-                        path.put(nextStep, current);
+                        path.add(new Node(nextStep, current));
                         rightPath = reversPath(path, from, nextStep);
                         return rightPath;
                     }
@@ -53,23 +48,27 @@ public class Bfs {
         return rightPath;
     }
 
-
     private Coordinates addShift(Coordinates one, Coordinates two) {
         return new Coordinates(one.row() + two.row(), one.column() + two.column());
     }
 
-    private List<Coordinates> reversPath(Map<Coordinates, Coordinates> path, Coordinates from, Coordinates to) {
+    private List<Coordinates> reversPath(List<Node> path, Coordinates from, Coordinates to) {
         List<Coordinates> rightPath = new ArrayList<>();
         Coordinates current = to;
         while ((current != null) && (!current.equals(from))) {
             rightPath.add(current);
-            current = path.get(current);
+
+            Coordinates parent = null;
+            for (Node node : path) {
+                if (node.getCurrent().equals(current)) {
+                    parent = node.getPrevious();
+                    break;
+                }
+            }
+            current = parent;
         }
         Collections.reverse(rightPath);
         return rightPath;
     }
-
 }
-
-
 
