@@ -10,7 +10,6 @@ public class Main {
         RendererWorldMap renderer = new RendererWorldMap();
         Simulation simulation = new Simulation(worldMap, renderer);
         simulation.start();
-        int a = 123;
         for (int i = 0; i < 8; i++) {
             simulation.startSimulation();
             renderer.print(worldMap);

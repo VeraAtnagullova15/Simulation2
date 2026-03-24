@@ -2,6 +2,7 @@ package simulation.core;
 
 import simulation.actions.Action;
 import simulation.actions.MoveCreature;
+import simulation.actions.SpawnAction;
 import simulation.actions.SpawnEntityAction;
 import simulation.entities.creatures.Herbivore;
 import simulation.entities.creatures.Predator;
@@ -20,11 +21,7 @@ public class Simulation {
     public Simulation(WorldMap worldMap, RendererWorldMap renderer) {
         this.worldMap = worldMap;
         this.renderer = renderer;
-        initAction = List.of(new SpawnEntityAction(() -> new Herbivore(), 4),
-                new SpawnEntityAction(() -> new Predator(), 3),
-                new SpawnEntityAction(() -> new Grass(), 4),
-                new SpawnEntityAction(() -> new Tree(), 3),
-                new SpawnEntityAction(() -> new Rock(), 2));
+        initAction = List.of(new SpawnEntityAction());
         turnAction = List.of(new MoveCreature());
     }
 
