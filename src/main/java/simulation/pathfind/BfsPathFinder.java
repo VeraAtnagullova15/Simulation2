@@ -6,7 +6,7 @@ import simulation.entities.Entity;
 
 import java.util.*;
 
-public class Bfs implements PathFinder {
+public class BfsPathFinder implements PathFinder {
 
     @Override
     public List<Coordinates> findPath(WorldMap worldMap, Coordinates from, Class<? extends Entity> target) {

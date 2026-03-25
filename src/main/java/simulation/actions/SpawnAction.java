@@ -15,12 +15,18 @@ import java.util.Map;
 import java.util.Random;
 
 public abstract class SpawnAction extends Action {
+    private static final int HERBIVORE_AMOUNT = 8;
+    private static final int PREDATOR_AMOUNT = 4;
+    private static final int GRASS_AMOUNT = 10;
+    private static final int ROCK_AMOUNT = 4;
+    private static final int TREE_AMOUNT = 5;
+
     protected final static Map<Class<? extends Entity>, Integer> ENTITY_MAX_NUMBER = Map.of(
-            Herbivore.class, 8,
-            Predator.class, 3,
-            Grass.class, 10,
-            Rock.class, 5,
-            Tree.class, 5
+            Herbivore.class, HERBIVORE_AMOUNT,
+            Predator.class, PREDATOR_AMOUNT,
+            Grass.class, GRASS_AMOUNT,
+            Rock.class, ROCK_AMOUNT,
+            Tree.class, TREE_AMOUNT
             );
 private EntityFactory factory;
 

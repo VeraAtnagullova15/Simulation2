@@ -6,7 +6,7 @@ import simulation.entities.Entity;
 
 import java.util.*;
 
-public class BfsWithNode implements PathFinder {
+public class BfsWithNodePathFinder implements PathFinder {
     @Override
     public List<Coordinates> findPath(WorldMap worldMap, Coordinates from, Class<? extends Entity> target) {
         Queue<Coordinates> neighbors = new ArrayDeque<>();

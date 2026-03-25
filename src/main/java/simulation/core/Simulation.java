@@ -1,9 +1,6 @@
 package simulation.core;
 
-import simulation.actions.Action;
-import simulation.actions.MoveCreature;
-import simulation.actions.SpawnAction;
-import simulation.actions.SpawnEntityAction;
+import simulation.actions.*;
 import simulation.entities.creatures.Herbivore;
 import simulation.entities.creatures.Predator;
 import simulation.entities.map_objects.Grass;
@@ -22,7 +19,7 @@ public class Simulation {
         this.worldMap = worldMap;
         this.renderer = renderer;
         initAction = List.of(new SpawnEntityAction());
-        turnAction = List.of(new MoveCreature());
+        turnAction = List.of(new MoveCreature(), new RespawnEntityAction());
     }
 
     public void start() {

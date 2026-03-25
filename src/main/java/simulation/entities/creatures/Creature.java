@@ -1,10 +1,9 @@
 package simulation.entities.creatures;
 
-import simulation.pathfind.Bfs;
 import simulation.core.Coordinates;
 import simulation.core.WorldMap;
 import simulation.entities.Entity;
-import simulation.pathfind.BfsWithNode;
+import simulation.pathfind.BfsWithNodePathFinder;
 import simulation.pathfind.PathFinder;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public abstract class Creature extends Entity {
         this.speed = speed;
         this.hp = hp;
         this.target = target;
-        bfs = new BfsWithNode();
+        bfs = new BfsWithNodePathFinder();
     }
 
     public int getHp() {
@@ -40,7 +39,6 @@ public abstract class Creature extends Entity {
             try {
                 Coordinates current = worldMap.getCoordinates(this);
                 List<Coordinates> path = bfs.findPath(worldMap, current, target);
-                System.out.println(path);
 
                 if (path.isEmpty()) {
                     return;
@@ -48,6 +46,8 @@ public abstract class Creature extends Entity {
                 if (path.size() == 1) {
                     Coordinates targetStep = path.get(0);
                     interact(worldMap, targetStep);
+                    worldMap.moveEntity(this, path.get(0));
+                    return;
                 }
                 worldMap.moveEntity(this, path.get(0));
             } catch (NoSuchElementException e) {
