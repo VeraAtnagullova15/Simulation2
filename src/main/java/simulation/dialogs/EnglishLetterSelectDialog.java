@@ -21,8 +21,8 @@ public class EnglishLetterSelectDialog extends AbstractDialog<Character>{
 
     @Override
     protected boolean isAllowed(Character result) {
-        result = Character.toLowerCase(result);
-        return result == 't' || result == 's' || result == 'p' || result == 'r' || result == 'q';
+        result = Character.toUpperCase(result);
+        return keys.contains(result);
     }
 
     @Override
@@ -40,5 +40,4 @@ public class EnglishLetterSelectDialog extends AbstractDialog<Character>{
             showError();
         }
     }
-
 }
