@@ -17,9 +17,7 @@ public class Predator extends Creature {
     void interact(WorldMap worldMap, Coordinates victim) {
         Creature victimEntity = (Creature)worldMap.getEntity(victim);
         int currentVictimHP = victimEntity.getHp();
-        System.out.println("CurrentVictimHP:" + currentVictimHP);
         victimEntity.setHp(currentVictimHP - this.attackPower);
-        System.out.println("VictimHP after attack: " + victimEntity.hp);
         if(victimEntity.isDead()) {
             worldMap.removeEntity(victimEntity);
         }

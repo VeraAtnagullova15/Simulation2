@@ -15,9 +15,9 @@ import java.util.Map;
 import java.util.Random;
 
 public abstract class SpawnAction extends Action {
-    private static final int HERBIVORE_AMOUNT = 8;
-    private static final int PREDATOR_AMOUNT = 4;
-    private static final int GRASS_AMOUNT = 10;
+    private static final int HERBIVORE_AMOUNT = 10;
+    private static final int PREDATOR_AMOUNT = 5;
+    private static final int GRASS_AMOUNT = 12;
     private static final int ROCK_AMOUNT = 4;
     private static final int TREE_AMOUNT = 5;
 
@@ -28,7 +28,8 @@ public abstract class SpawnAction extends Action {
             Rock.class, ROCK_AMOUNT,
             Tree.class, TREE_AMOUNT
             );
-private EntityFactory factory;
+
+    private EntityFactory factory;
 
     public SpawnAction() {
         factory = new RealEntityFactory();
@@ -46,8 +47,8 @@ private EntityFactory factory;
     private Coordinates getRandomEmptyCoodrinates(WorldMap worldMap) {
         Random random = new Random();
         while (true) {
-            int row = random.nextInt(worldMap.getRowCount());
-            int column = random.nextInt(worldMap.getColumnCount());
+            int row = random.nextInt(worldMap.getROW_COUNT());
+            int column = random.nextInt(worldMap.getCOLUMN_COUNT());
             Coordinates coordinates = new Coordinates(row, column);
 
             if (worldMap.isCellAvailablePutEntity(coordinates)) {

@@ -24,9 +24,9 @@ public class RendererWorldMap {
     public void print(WorldMap worldMap) {
         System.out.println(CLEAR_SCREEN);
         System.out.flush();
-        for (int row = 0; row < worldMap.getRowCount(); row++) {
+        for (int row = 0; row < worldMap.getROW_COUNT(); row++) {
             StringBuilder line = new StringBuilder("");
-            for (int column = 0; column < worldMap.getColumnCount(); column++) {
+            for (int column = 0; column < worldMap.getCOLUMN_COUNT(); column++) {
                 Coordinates coordinates = new Coordinates(row, column);
                 Entity entity = worldMap.getEntity(coordinates);
                 String background = REGULAR_BACKGROUD;

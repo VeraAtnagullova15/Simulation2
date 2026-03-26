@@ -5,21 +5,21 @@ import simulation.entities.Entity;
 import java.util.*;
 
 public class WorldMap {
-    private final int rowCount;
-    private final int columnCount;
+    private final int ROW_COUNT;
+    private final int COLUMN_COUNT;
     private final Map<Coordinates, Entity> entities = new HashMap<>();
 
-    public WorldMap(int rowCount, int columnCount) {
-        this.rowCount = rowCount;
-        this.columnCount = columnCount;
+    public WorldMap() {
+        ROW_COUNT = 12;
+        COLUMN_COUNT = 12;
     }
 
-    public int getRowCount() {
-        return rowCount;
+    public int getROW_COUNT() {
+        return ROW_COUNT;
     }
 
-    public int getColumnCount() {
-        return columnCount;
+    public int getCOLUMN_COUNT() {
+        return COLUMN_COUNT;
     }
 
     public Map<Coordinates, Entity> getEntities() {
@@ -34,8 +34,8 @@ public class WorldMap {
     }
 
     public boolean isCellInside(Coordinates coordinates) {
-        return  ((coordinates.row() >= 0 && coordinates.row() < getRowCount()) &&
-        (coordinates.column() >= 0 && coordinates.column() < getColumnCount()));
+        return  ((coordinates.row() >= 0 && coordinates.row() < getROW_COUNT()) &&
+        (coordinates.column() >= 0 && coordinates.column() < getCOLUMN_COUNT()));
     }
 
     public boolean isCellAvailablePutEntity(Coordinates coordinates) {
