@@ -60,5 +60,8 @@ public abstract class Creature extends Entity {
         return hp <= 0;
     }
 
+    public boolean isAttacked() {
+        return hp <= 50;
+    }
 
 }

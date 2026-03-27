@@ -1,6 +1,7 @@
 package simulation.core;
 
 import simulation.entities.Entity;
+import simulation.entities.creatures.Creature;
 import simulation.entities.creatures.Herbivore;
 import simulation.entities.creatures.Predator;
 import simulation.entities.map_objects.Grass;
@@ -10,11 +11,9 @@ import simulation.entities.map_objects.Tree;
 public class RendererWorldMap {
     private static final String REGULAR_BACKGROUD = "\u001B[44;5;106m";
     private static final String WARNING_BACKGROUND = "\u001B[48;5;214m";
-    private static final String DANGER_BACKGROUND = "\u001B[48;5;160m";
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String CLEAR_SCREEN = "\033[2J\033[1;1H";
     private static final String EMPTY_SPACE = "\uD83D\uDD32";
-//private static final String EMPTY_SPACE = "◻\uFE0F";
     private static final String PREDATOR = "\uD83D\uDC3A";
     private static final String HERBIVORE = "\uD83D\uDC07";
     private static final String GRASS = "\uD83E\uDD55";
@@ -29,7 +28,7 @@ public class RendererWorldMap {
             for (int column = 0; column < worldMap.getCOLUMN_COUNT(); column++) {
                 Coordinates coordinates = new Coordinates(row, column);
                 Entity entity = worldMap.getEntity(coordinates);
-                String background = REGULAR_BACKGROUD;
+                String background = getBackgroundColor(entity);
                 line.append(background).append(String.format("%-3s", getSymbolEntities(entity))).append(ANSI_RESET);
             }
             System.out.println(line);
@@ -47,22 +46,21 @@ public class RendererWorldMap {
             return TREE;
         } else if (entity instanceof Rock) {
             return ROCK;
+        } else if (entity == null) {
+            return EMPTY_SPACE;
         }
-return EMPTY_SPACE;
-//        throw new IllegalArgumentException("Unknown entity: " + entity);
-
+        throw new IllegalArgumentException("Unknown entity: " + entity);
     }
 
-//    private String getBackgroundColor(Entity entity) {
-//        if (entity instanceof Creature creature) {
-//            if (creature.getHealth() <= 15 || creature.getHunger() >= 85) {
-//                return DANGER_BACKGROUND;
-//            } else if (creature.getHealth() <= 30 || creature.getHunger() >= 70){
-//                return WARNING_BACKGROUND;
-//            }
-//        }
-//        return REGULAR_BACKGROUD;
-//    }
-
-
+    private String getBackgroundColor(Entity entity) {
+        if (entity instanceof Creature creature) {
+            if (creature.isAttacked()) {
+                return WARNING_BACKGROUND;
+            }
+        }
+        return REGULAR_BACKGROUD;
+    }
 }
+
+
+

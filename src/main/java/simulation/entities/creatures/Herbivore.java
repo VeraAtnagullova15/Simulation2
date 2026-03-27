@@ -17,4 +17,5 @@ public class Herbivore extends Creature {
         Entity targetEntity = worldMap.getEntity(target);
         worldMap.removeEntity(targetEntity);
     }
+
 }

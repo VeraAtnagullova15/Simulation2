@@ -18,7 +18,7 @@ public abstract class SpawnAction extends Action {
     private static final int HERBIVORE_AMOUNT = 10;
     private static final int PREDATOR_AMOUNT = 5;
     private static final int GRASS_AMOUNT = 12;
-    private static final int ROCK_AMOUNT = 4;
+    private static final int ROCK_AMOUNT = 5;
     private static final int TREE_AMOUNT = 5;
 
     protected final static Map<Class<? extends Entity>, Integer> ENTITY_MAX_NUMBER = Map.of(
