@@ -44,8 +44,7 @@ public class Main {
                 }
                 case 'R' -> simulation.restartSimulationLoop();
                 case 'Q' -> {
-                    simulation.pauseSimulation();
-                    simulation.isRunning = false;
+                    simulation.quitSimulation();
                     try {
                         thread.join();
                     } catch (InterruptedException e) {

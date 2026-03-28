@@ -65,5 +65,12 @@ public class Simulation {
         }
     }
 
+    public void quitSimulation() {
+        pauseSimulation();
+        isRunning = false;
+        synchronized (lock) {
+            lock.notifyAll();
+        }
+    }
 
 }

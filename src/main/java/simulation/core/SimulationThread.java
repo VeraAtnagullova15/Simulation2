@@ -10,16 +10,18 @@ public class SimulationThread implements Runnable {
     @Override
     public void run() {
         while (simulation.isRunning) {
-            while (simulation.isPaused) {
-                synchronized (simulation.lock) {
-                    try {
-                        simulation.lock.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+            synchronized (simulation.lock) {
+                while (simulation.isPaused && simulation.isRunning) {
+                        try {
+                            simulation.lock.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
+                simulation.startSimulationLoop();
             }
-            simulation.startSimulationLoop();
+
         }
-    }
+
 }
